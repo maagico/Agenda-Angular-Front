@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button'
 import {MatCardModule} from '@angular/material/card';
 
 import { AppComponent } from './app.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './componentes/comun/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './componentes/comun/footer/footer.component';
@@ -29,7 +30,8 @@ import { LoginComponent } from './componentes/login/login.component';
     MatInputModule,
     MatIconModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

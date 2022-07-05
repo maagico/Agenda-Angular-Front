@@ -1,6 +1,5 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-
 .centrar-titulo{    
     
     margin-top:150px;
@@ -10,6 +9,7 @@
 }
 
 .centrar-login{
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,4 +24,13 @@
 .campo-password{
     
     width: 300px;
+}
+
+.error-validacion{
+    color: red;
+}
+
+.error-login{
+
+    color: red;
 }
