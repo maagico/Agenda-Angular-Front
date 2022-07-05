@@ -24,12 +24,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  get f(): { [key: string]: AbstractControl } {
-    return this.form.controls;
-  }
-
   onSubmit(): void {
-    this.submitted = true;
+
+    console.log(JSON.stringify(this.form.value, null, 2));
+
+    
     
     if (this.form.invalid) {
 
