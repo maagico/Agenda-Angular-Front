@@ -1,0 +1,27 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+.centrar-titulo{    
+    
+    margin-top:150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
+.centrar-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.campo-usuario{
+
+    width: 300px;
+    margin-top:50px
+}
+
+.campo-password{
+    
+    width: 300px;
+}

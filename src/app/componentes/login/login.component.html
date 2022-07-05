@@ -1,0 +1,38 @@
+
+<div  class="centrar-titulo">
+  
+  <mat-card>
+    <mat-card-title >Loguéate para entrar a la <br/>aplicación </mat-card-title>
+  </mat-card>
+
+</div>
+
+<div class="centrar-login">
+
+  <form>
+    
+      <mat-form-field appearance="fill" class = "campo-usuario">
+        <mat-label>Introduce el usuario</mat-label>
+        <input matInput type="text">
+      </mat-form-field>
+      
+      <br/>
+
+      <mat-form-field appearance="fill" class = "campo-password">
+        <mat-label>Introduce el password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" class = "campo-password">
+        <!--
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Ocultar password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        -->
+      </mat-form-field>
+      
+      <br/>
+
+      <button mat-raised-button color="primary">Entrar</button>
+    
+  </form>
+
+</div>
+
