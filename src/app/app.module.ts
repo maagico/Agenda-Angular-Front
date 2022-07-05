@@ -14,13 +14,16 @@ import { HeaderComponent } from './componentes/comun/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './componentes/comun/footer/footer.component';
 import { LoginComponent } from './componentes/login/login.component';
+import { AppRoutingModule } from './app-routing.module';
+import { SigninComponent } from './componentes/signin/signin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { LoginComponent } from './componentes/login/login.component';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
