@@ -1,4 +1,3 @@
-
 <div  class="centrar-titulo">
   
   <mat-card>
@@ -9,7 +8,7 @@
 
 <div class="centrar-login">
 
-  <form [formGroup]="form" (ngSubmit)="onSubmit()" >
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     
       <mat-form-field appearance="fill" class = "campo-usuario">
         <mat-label>Introduce el usuario</mat-label>
@@ -45,9 +44,11 @@
       <br/>
 
       <button mat-raised-button color="primary">Entrar</button>
-      <button mat-stroked-button color="success" class = "boton-nuevo-usuario">Crear nuevo usuario</button>
-    
+      <a mat-stroked-button color="success"  routerLink="/signin" class = "boton-nuevo-usuario">Crear nuevo usuario</a>
+
   </form>
-
+ 
 </div>
+ 
 
+ 
