@@ -8,6 +8,10 @@
     align-items: center;   
 }
 
+.titulo{
+    background-color: rgb(250, 239, 196);
+}
+
 .centrar-login{
     
     display: flex;

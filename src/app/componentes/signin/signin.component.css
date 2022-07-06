@@ -1,0 +1,55 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.centrar-titulo{    
+    
+    margin-top:150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
+.titulo{
+    background-color: rgb(250, 239, 196);
+}
+
+.centrar-signin{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.campo-usuario{
+
+    width: 300px;
+    margin-top:50px
+}
+
+.campo-password{
+    
+    width: 300px;
+}
+
+.campo-roles{
+
+    width: 300px;
+}
+
+.error-validacion{
+    color: red;
+}
+
+.error-login{
+
+    color: red;
+}
+
+.boton-volver{
+    
+    margin-left:15px;
+    width: 169px;
+}
+
+.boton-crear-usuario{
+    width: 115px;
+}

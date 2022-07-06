@@ -7,6 +7,7 @@ import { MatInputModule} from '@angular/material/input';
 import { MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button'
 import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
 
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -16,6 +17,9 @@ import { FooterComponent } from './componentes/comun/footer/footer.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SigninComponent } from './componentes/signin/signin.component';
+
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -34,8 +38,10 @@ import { SigninComponent } from './componentes/signin/signin.component';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
+    MatSelectModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
