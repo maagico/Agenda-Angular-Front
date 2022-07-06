@@ -20,7 +20,8 @@ export class ApiService {
   public enviarPeticionPostUsuario(usuario: string): Observable<any>{
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-const options = { headers: headers };
+    const options = { headers: headers };
+    
     return this.httpClient.post<any>(this.REST_API_URL + "/usuarios", usuario, options);
   } 
    

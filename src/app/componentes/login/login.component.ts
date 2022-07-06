@@ -25,10 +25,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-
-    console.log(JSON.stringify(this.form.value, null, 2));
-
-    
     
     if (this.form.invalid) {
 
@@ -39,7 +35,6 @@ export class LoginComponent implements OnInit {
       this.errorValidacion = "Usuario o password incorrectos";
     }
     
-    console.log(JSON.stringify(this.form.value, null, 2));
   }
   
 }
