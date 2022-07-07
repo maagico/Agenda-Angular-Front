@@ -38,6 +38,8 @@ export class LoginComponent implements OnInit {
     
     let usuario = JSON.stringify(this.form.value, null, 2);
     
+    this.mensajeCuentaCreada = "";
+
     console.log(usuario);
 
     if (this.form.invalid) {
