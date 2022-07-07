@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +13,10 @@ export class LoginComponent implements OnInit {
   errorValidacion: string = "";
   form!: FormGroup;
   submitted = false;
-  
-  constructor(private formBuilder: FormBuilder){
+  mensajeCuentaCreada = "";
+
+  constructor(private formBuilder: FormBuilder,
+              private activatedRoute: ActivatedRoute,){
   }
   
   ngOnInit(): void {
@@ -22,11 +25,19 @@ export class LoginComponent implements OnInit {
       usuario: ['', Validators.required],
       password: ['', Validators.required],
     });
+
+    let cuentaCreada: string | null = this.activatedRoute.snapshot.queryParamMap.get('cc');
+
+    if(cuentaCreada != null && cuentaCreada === 'ok'){
+      
+      this.mensajeCuentaCreada = "Se ha creado la cuenta correctamente. ";
+    }
   }
 
   onSubmit(): void {
     
     let usuario = JSON.stringify(this.form.value, null, 2);
+    
     console.log(usuario);
 
     if (this.form.invalid) {

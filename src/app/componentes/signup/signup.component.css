@@ -12,7 +12,7 @@
     background-color: rgb(250, 239, 196);
 }
 
-.centrar-signin{
+.centrar-signup{
     
     display: flex;
     justify-content: center;
@@ -52,4 +52,8 @@
 
 .boton-crear-usuario{
     width: 115px;
+}
+
+.error-signup{
+    color: red;
 }

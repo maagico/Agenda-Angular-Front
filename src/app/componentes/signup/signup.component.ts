@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from '../../servicios/api.service';
 
 @Component({
@@ -13,11 +14,14 @@ export class SignupComponent implements OnInit {
   form!: FormGroup;
   errorSignup:string = "";
 
-  constructor(private formBuilder: FormBuilder, 
+  constructor(private formBuilder: FormBuilder,
+              private router: Router, 
               private apiService: ApiService){
   }
 
   ngOnInit(): void {
+
+    
 
     this.form = this.formBuilder.group({
       usuario: ['', Validators.required],
@@ -42,9 +46,14 @@ export class SignupComponent implements OnInit {
 
     }else{
 
-      this.apiService.enviarPeticionPostUsuario(usuario).subscribe((usuario: Object)=>{
+    
+      this.apiService.enviarPeticionPostUsuario(usuario).subscribe((usuario: string)=>{
         
-        console.log(usuario);
+        let respuesta = JSON.stringify(usuario, null, 2);
+        
+        console.log(respuesta);
+
+        this.router.navigate([''],{ queryParams: { cc: 'ok' } });
       })
 
       this.errorSignup = "El usuario seleccionado ya existe";
