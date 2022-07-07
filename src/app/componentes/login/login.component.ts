@@ -26,6 +26,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     
+    let usuario = JSON.stringify(this.form.value, null, 2);
+    console.log(usuario);
+
     if (this.form.invalid) {
 
       return;

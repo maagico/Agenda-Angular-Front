@@ -3,15 +3,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../servicios/api.service';
 
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
-export class SigninComponent implements OnInit {
+export class SignupComponent implements OnInit {
 
   roles: any;
   form!: FormGroup;
-  errorSignin:string = "";
+  errorSignup:string = "";
 
   constructor(private formBuilder: FormBuilder, 
               private apiService: ApiService){
@@ -47,7 +47,7 @@ export class SigninComponent implements OnInit {
         console.log(usuario);
       })
 
-      this.errorSignin = "El usuario seleccionado ya existe";
+      this.errorSignup = "El usuario seleccionado ya existe";
       
     }
   }

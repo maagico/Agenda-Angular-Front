@@ -16,7 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './componentes/comun/footer/footer.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SigninComponent } from './componentes/signin/signin.component';
+import { SignupComponent } from './componentes/signup/signup.component';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -27,7 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    SigninComponent
+    SignupComponent
   ],
   imports: [
     BrowserModule,
