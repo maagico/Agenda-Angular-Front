@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './componentes/login/login.component';
 import { SignupComponent } from './componentes/signup/signup.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
 
@@ -12,7 +13,11 @@ const routes: Routes = [
   },
   {
     path: 'signup',
-    component: SignupComponent
+    component: SignupComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ADMIN']
+    }
   } 
 
 ];

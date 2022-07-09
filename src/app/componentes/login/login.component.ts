@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ApiService } from 'src/app/servicios/api.service';
 
 @Component({
   selector: 'app-login',
@@ -16,13 +17,14 @@ export class LoginComponent implements OnInit {
   mensajeCuentaCreada = "";
 
   constructor(private formBuilder: FormBuilder,
-              private activatedRoute: ActivatedRoute,){
+              private activatedRoute: ActivatedRoute,
+              private apiService: ApiService){
   }
   
   ngOnInit(): void {
 
     this.form = this.formBuilder.group({
-      usuario: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required],
     });
 
@@ -37,10 +39,8 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     
     let usuario = JSON.stringify(this.form.value, null, 2);
-    
-    this.mensajeCuentaCreada = "";
 
-    console.log(usuario);
+    this.mensajeCuentaCreada = "";
 
     if (this.form.invalid) {
 
@@ -48,7 +48,38 @@ export class LoginComponent implements OnInit {
 
     }else{
 
-      this.errorValidacion = "Usuario o password incorrectos";
+      this.apiService.enviarPeticionPostLoginUsuario(usuario).subscribe({
+        next: data => {
+          
+          let ok: boolean = data.ok;
+          let token = data.token;
+
+          if(ok){
+
+            this.errorValidacion = "";
+            
+            console.log(token);
+          }
+
+        },
+        error: error => {
+            
+          this.errorValidacion = "Usuario o password incorrectos";
+        }
+    })
+        
+
+
+
+        //let ok = data.ok;
+        //let token = data.token;
+        
+        //if(ok){
+        //}
+        //this.errorValidacion = "Usuario o password incorrectos";
+      //}), (error: any) => alert('asdad');
+
+      
     }
     
   }
