@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
           if(ok){
 
             this.errorValidacion = "";
-            
+
             console.log(token);
           }
 
@@ -66,20 +66,8 @@ export class LoginComponent implements OnInit {
             
           this.errorValidacion = "Usuario o password incorrectos";
         }
-    })
-        
+      })
 
-
-
-        //let ok = data.ok;
-        //let token = data.token;
-        
-        //if(ok){
-        //}
-        //this.errorValidacion = "Usuario o password incorrectos";
-      //}), (error: any) => alert('asdad');
-
-      
     }
     
   }

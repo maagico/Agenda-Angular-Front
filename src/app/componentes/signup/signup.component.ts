@@ -23,16 +23,20 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     
     this.form = this.formBuilder.group({
-      usuario: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required],
       roleId: ['', Validators.required],
     });
 
-    this.apiService.enviarPeticionGetRoles().subscribe((roles: Object)=>{
-      console.log(roles);
-      this.roles = roles;
-    })  
+    this.apiService.enviarPeticionGetRoles().subscribe({
+      next: data => {
 
+        this.roles = data;
+      },
+      error: error => {
+            
+      }
+    })
   }
 
   onSubmit(): void {
@@ -46,15 +50,26 @@ export class SignupComponent implements OnInit {
     }else{
 
     
-      this.apiService.enviarPeticionPostLoginUsuario(usuario).subscribe(data => {
-         
-        console.log(data.token);
+      this.apiService.enviarPeticionPostCrearCuenta(usuario).subscribe({
+        next: data => {
 
-        //this.router.navigate(['']);
+          const ok: boolean = data.ok;
+          
+          if(ok){
+
+            this.router.navigate([''],{ queryParams: { cc: 'ok' } });
+          }
+        },
+        error: error => {
+             
+          const ok: boolean = error.ok;
+
+          if(!ok){
+
+            this.errorSignup = "El usuario ya existe, por favor selecciona otro";
+          }
+        }
       })
-
-      this.errorSignup = "El usuario seleccionado ya existe";
-      
     }
   }
 }
