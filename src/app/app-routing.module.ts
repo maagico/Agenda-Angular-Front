@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './componentes/login/login.component';
 import { SignupComponent } from './componentes/signup/signup.component';
 import { AuthGuard } from './auth.guard';
+import { ContactosComponent } from './componentes/contactos/contactos.component';
 
 const routes: Routes = [
 
@@ -13,12 +14,17 @@ const routes: Routes = [
   },
   {
     path: 'signup',
-    component: SignupComponent,
+    component: SignupComponent
+  },
+  {
+    path: 'contactos',
+    component: ContactosComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ADMIN']
+      roles: ['ROLE_USUARIO']
     }
-  } 
+  }  
+
 
 ];
 

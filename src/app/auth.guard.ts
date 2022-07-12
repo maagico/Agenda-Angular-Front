@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanLoad, Route, RouterStateSnapshot, UrlSegment } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanLoad } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
@@ -9,22 +9,18 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   
   canActivate(route: ActivatedRouteSnapshot): boolean {
     
-    let rolesRuta: Array<string> = this.getRolesRuta(route);
+    let roleRuta: string = this.getRoleRuta(route);
 
     const helper = new JwtHelperService();
-    let token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c3VhcmlvIiwiUk9MRVMiOiJVU1VBUklPIn0.yMd0jMMiuKvjwNOJ6nAAVBOWPOZC95vx87bj5SPxVtS7fnCXbkKG2AQTrK8g2nD97qhKVIGyD-1Mo5r0K5vumw"
+   
+    let token: any = localStorage.getItem('token');
 
-    const tokenDescifrado =helper.decodeToken(token);    
+    const tokenDescifrado = helper.decodeToken(token);    
+    const roleToken = tokenDescifrado['ROLES'];
 
-    console.log(tokenDescifrado['sub']);
-
-    let rutaPermitida = this.comprobarRolesRuta(rolesRuta);
-
-    console.log(rutaPermitida);
-
-    //console.log("Ruta permitida" + rutaPermitida);
-
-    return true;
+    let esRutaPermitida = this.comprobarRoleRuta(roleRuta, roleToken);
+ 
+    return esRutaPermitida;
   }
 
   canActivateChild(childRoute: ActivatedRouteSnapshot): boolean {
@@ -36,35 +32,36 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     return false;
   }
 
-  private getRolesRuta(route: ActivatedRouteSnapshot): Array<string> {
+  private getRoleRuta(route: ActivatedRouteSnapshot): string {
     
-    let permisosRuta: Array<string> = [];
+    let permisoRuta: string = "";
 
     if (route.data && route.data['roles']) {
      
-      permisosRuta = route.data['roles'];
+      permisoRuta = route.data['roles'];
     }
 
-    return permisosRuta;
+    return permisoRuta;
   }
 
-  private comprobarRolesRuta(rolesRuta: Array<string>): boolean {
-    
-    let rolesToken: Array<string> = ['USUARIO', 'ADMIN'];
+  private comprobarRoleRuta(rolesRuta: string, rolesToken: string): boolean {
+
+    /*
     let buscarRol: boolean = true;
     let rolEncontrado: boolean = false;
 
-    for (let index = 0; index < rolesToken.length && buscarRol; index++) {
+    for (let i = 0; i < rolesToken.length && buscarRol; i++) {
       
-      const rolToken = rolesToken[index];
+      const rolToken = rolesToken[i];
 
       if(rolesRuta.indexOf(rolToken) != -1){
         buscarRol = false;
         rolEncontrado = true;
       }
     }
+    */
 
-    return rolEncontrado;
+    return rolesRuta == rolesToken;
   }
 
 }

@@ -22,9 +22,6 @@ export class ApiService {
     const params = new HttpParams()
       .set('username', username)
       .set('password', password);
-        
-    //let  headers = new HttpHeaders();
-    //headers = headers.set("Authorization", "Bearer 11231313123132132131");
   
     return this.httpClient.post<any>(this.REST_API_URL + "/login",  params);
   } 
@@ -45,7 +42,7 @@ export class ApiService {
     //let  headers = new HttpHeaders();
     //headers = headers.set("Authorization", "Bearer 11231313123132132131");
   
-    return this.httpClient.post<any>(this.REST_API_URL + "/crearCuenta",  params);
+    return this.httpClient.post<any>(this.REST_API_URL + "/cuentas",  params);
   } 
 
   public enviarPeticionGetRoles(): Observable<any>{

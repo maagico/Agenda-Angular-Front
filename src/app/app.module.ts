@@ -18,7 +18,9 @@ import { LoginComponent } from './componentes/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SignupComponent } from './componentes/signup/signup.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './servicios/auth.interceptor.service';
+import { ContactosComponent } from './componentes/contactos/contactos.component';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ContactosComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,13 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

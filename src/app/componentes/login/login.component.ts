@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/servicios/api.service';
 
 @Component({
@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private activatedRoute: ActivatedRoute,
+              private router: Router, 
               private apiService: ApiService){
   }
   
@@ -54,9 +55,13 @@ export class LoginComponent implements OnInit {
           let ok: boolean = data.ok;
           let token = data.token;
 
+          localStorage.setItem('token', token);
+
           if(ok){
 
             this.errorValidacion = "";
+
+            this.router.navigate(['contactos']);
 
             console.log(token);
           }
