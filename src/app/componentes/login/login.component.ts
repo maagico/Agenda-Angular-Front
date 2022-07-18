@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { ApiService } from 'src/app/servicios/api.service';
+import { UsuarioService } from "src/app/servicios/usuario.service";
 
 @Component({
   selector: 'app-login',
@@ -10,16 +12,17 @@ import { ApiService } from 'src/app/servicios/api.service';
 })
 export class LoginComponent implements OnInit {
 
-  hide:boolean = true;
+  ocultarCabecera:boolean = true;
   errorValidacion: string = "";
   form!: FormGroup;
   submitted = false;
-  mensajeCuentaCreada = "";
+  mensajeCuentaCreada:string = "";
 
   constructor(private formBuilder: FormBuilder,
               private activatedRoute: ActivatedRoute,
               private router: Router, 
-              private apiService: ApiService){
+              private apiService: ApiService,
+              private usuarioService: UsuarioService){
   }
   
   ngOnInit(): void {
@@ -61,11 +64,19 @@ export class LoginComponent implements OnInit {
 
             this.errorValidacion = "";
 
+            const helper = new JwtHelperService();
+            let token: any = localStorage.getItem('token');
+
+            const tokenDescifrado = helper.decodeToken(token);    
+            const roleToken = tokenDescifrado['ROLES'];            
+            console.log("LoginComponent " + roleToken);
+
+            // Si es rol ROLE_USUARIO que vaya a contactos, en caso 
+            //de que sea ROLE_ADMIN va a usuarios
+
+            this.usuarioService.setEnContacto(true);
             this.router.navigate(['contactos']);
-
-            console.log(token);
           }
-
         },
         error: error => {
             

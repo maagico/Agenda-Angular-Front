@@ -1,29 +1,41 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanLoad } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { UsuarioService } from './servicios/usuario.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   
+  usuarioService: UsuarioService;
+
+  constructor(_usuarioService: UsuarioService){
+    
+    this.usuarioService = _usuarioService;
+  }
+
   canActivate(route: ActivatedRouteSnapshot): boolean {
     
     let roleRuta: string = this.getRoleRuta(route);
 
-    const helper = new JwtHelperService();
-   
     let token: any = localStorage.getItem('token');
 
+    const helper = new JwtHelperService();
     const tokenDescifrado = helper.decodeToken(token);    
     const roleToken = tokenDescifrado['ROLES'];
 
     let esRutaPermitida = this.comprobarRoleRuta(roleRuta, roleToken);
- 
+    
+    if(roleToken == 'ROLE_USUARIO'){
+
+      this.usuarioService.setEnContacto(true);
+    }
+
     return esRutaPermitida;
   }
 
-  canActivateChild(childRoute: ActivatedRouteSnapshot): boolean {
+  canActivateChild(_childRoute: ActivatedRouteSnapshot): boolean {
 
     return false;
   }
@@ -34,14 +46,14 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
   private getRoleRuta(route: ActivatedRouteSnapshot): string {
     
-    let permisoRuta: string = "";
+    let rolRuta: string = "";
 
     if (route.data && route.data['roles']) {
      
-      permisoRuta = route.data['roles'];
+      rolRuta = route.data['roles'];
     }
 
-    return permisoRuta;
+    return rolRuta;
   }
 
   private comprobarRoleRuta(rolesRuta: string, rolesToken: string): boolean {

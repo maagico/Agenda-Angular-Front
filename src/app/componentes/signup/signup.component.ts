@@ -41,7 +41,7 @@ export class SignupComponent implements OnInit {
 
   onSubmit(): void {
 
-    let usuario = JSON.stringify(this.form.value, null, 2);
+    let usuarioForm = JSON.stringify(this.form.value, null, 2);
     
     if (this.form.invalid) {
 
@@ -50,7 +50,7 @@ export class SignupComponent implements OnInit {
     }else{
 
     
-      this.apiService.enviarPeticionPostCrearCuenta(usuario).subscribe({
+      this.apiService.enviarPeticionPostCrearCuenta(usuarioForm).subscribe({
         next: data => {
 
           const ok: boolean = data.ok;

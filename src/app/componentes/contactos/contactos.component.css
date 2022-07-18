@@ -1,0 +1,17 @@
+.tabla-contactos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:10px;
+    
+}
+
+.titulo-contacto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mat-elevation-z8 {
+    width: 80%;
+}

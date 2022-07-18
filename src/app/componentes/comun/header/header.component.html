@@ -1,6 +1,15 @@
 <mat-toolbar>
-    <button mat-mini-fab aria-label="Página principal" routerLink="/">
-        <mat-icon>home</mat-icon>
-    </button>
+    <div [hidden]="!usuarioService.estaEnContacto()">
+        <button mat-mini-fab aria-label="Página principal" routerLink="/contactos">
+            <mat-icon>home</mat-icon>
+        </button>
+    </div>
+    <!--
+    <div>
+        <button mat-mini-fab aria-label="Página principal" routerLink="/usuarios">
+            <mat-icon>home</mat-icon>
+        </button>
+    </div>
+    -->
     <span class = "agenda">Agenda</span>   
 </mat-toolbar>

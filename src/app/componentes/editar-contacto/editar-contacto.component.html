@@ -1,0 +1,68 @@
+<div class = "centrar-titulo">
+  
+  <h1>Editar contacto</h1>
+
+</div>
+
+<div class="centrar-editar-contactos">
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+   
+        <mat-form-field appearance="fill" class = "campo-nombre">
+          <mat-label>Introduce el nombre</mat-label>
+          <input matInput type="text" formControlName="nombre" maxlength="20">
+        </mat-form-field>
+        
+        <br>
+        
+        <mat-form-field appearance="fill" class = "campo-apellidos">
+          <mat-label>Introduce los apellidos
+          </mat-label>
+          <input matInput type="text" formControlName="apellidos" maxlength="30">
+        </mat-form-field>
+
+        <hr/>
+
+        <mat-form-field appearance="fill" class = "campo-primer-telefono">
+          <mat-label>Introduce el teléfono
+          </mat-label>
+          <input matInput type="text" formControlName="telefono" maxlength="9">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class = "campo-segundo-telefono">
+          <mat-label>Introduce otro teléfono
+          </mat-label>
+          <input matInput type="text" formControlName="segundoTelefono" maxlength="9">
+        </mat-form-field>
+
+        <hr/>
+
+        <mat-form-field appearance="fill" class = "campo-primer-correo">
+          <mat-label>Introduce el correo
+          </mat-label>
+          <input matInput type="email" formControlName="correo" maxlength="70">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class = "campo-segundo-correo">
+          <mat-label>Introduce otro correo
+          </mat-label>
+          <input matInput type="email" formControlName="segundoCorreo" maxlength="70">
+        </mat-form-field>
+      
+        <br/>
+        
+        <a button mat-raised-button color="warn" routerLink="/signup" class = "boton-eliminar-contacto">
+            Eliminar contacto
+        </a>
+
+        <a button mat-raised-button color="primary"  routerLink="/signup" class = "boton-modificar-contacto">
+          Modificar contacto
+        </a>
+
+        <a mat-stroked-button color="success"  routerLink="/contactos" class = "boton-volver-contacto">
+          Volver
+        </a>
+        
+    </form>
+    
+</div>

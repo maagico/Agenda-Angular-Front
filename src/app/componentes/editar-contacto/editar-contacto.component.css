@@ -1,0 +1,60 @@
+.centrar-titulo{    
+
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
+.centrar-editar-contactos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.campo-nombre{
+    width:450px !important;
+}
+
+.campo-apellidos{
+    width:450px !important;
+}
+
+.campo-primer-telefono{
+    width:220px !important;
+    margin-right: 10px;
+}
+
+.campo-segundo-telefono{
+    width:220px !important;
+}
+
+.campo-primer-correo{
+    width:220px !important;
+    margin-right: 10px;
+}
+
+.campo-segundo-correo{
+    width:220px !important;
+}
+
+.boton-eliminar-contacto{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.boton-modificar-contacto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.boton-volver-contacto{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}

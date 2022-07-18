@@ -38,12 +38,19 @@ export class ApiService {
       .set('username', username)
       .set('password', password)
       .set('roleId', roleId);
-        
-    //let  headers = new HttpHeaders();
-    //headers = headers.set("Authorization", "Bearer 11231313123132132131");
-  
+      
     return this.httpClient.post<any>(this.REST_API_URL + "/cuentas",  params);
   } 
+
+  public enviarPeticionGetContactos(): Observable<any>{
+
+    return this.httpClient.get<any>(this.REST_API_URL + "/contactos");
+  }
+
+  public enviarPeticionGetContactoById(id: number): Observable<any>{
+
+    return this.httpClient.get<any>(this.REST_API_URL + "/contactos/" + id);
+  }
 
   public enviarPeticionGetRoles(): Observable<any>{
 

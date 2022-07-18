@@ -1,10 +1,12 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './componentes/login/login.component';
-import { SignupComponent } from './componentes/signup/signup.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { ContactosComponent } from './componentes/contactos/contactos.component';
+import { EditarContactoComponent } from './componentes/editar-contacto/editar-contacto.component';
+import { LoginComponent } from './componentes/login/login.component';
+import { SignupComponent } from './componentes/signup/signup.component';
+import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
 
 const routes: Routes = [
 
@@ -19,6 +21,22 @@ const routes: Routes = [
   {
     path: 'contactos',
     component: ContactosComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_USUARIO']
+    }
+  },
+  {
+    path: 'contactos/:id',
+    component: EditarContactoComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_USUARIO']
+    }
+  },
+  {
+    path: 'usuarios',
+    component: UsuariosComponent,
     canActivate: [AuthGuard],
     data: {
       roles: ['ROLE_USUARIO']
