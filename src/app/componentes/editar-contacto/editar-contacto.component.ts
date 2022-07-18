@@ -48,8 +48,8 @@ export class EditarContactoComponent implements OnInit {
   inicializarFormulario():void{
 
     this.form = this.formBuilder.group({
-      nombre: new FormControl(),
-      apellidos: new FormControl(),
+      nombre: ['',  Validators.required],
+      apellidos: ['',  Validators.required],
       telefono: new FormControl(),
       segundoTelefono: new FormControl(),
       correo: new FormControl(),
