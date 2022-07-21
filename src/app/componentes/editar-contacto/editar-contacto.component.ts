@@ -59,7 +59,28 @@ export class EditarContactoComponent implements OnInit {
   }
 
   onSubmit(){
-    
+
+    let contacto = JSON.stringify(this.form.value, null, 2);
+
+    if (this.form.invalid) {
+
+      return;
+
+    }else{
+
+      const id = this.activatedRoute.snapshot.paramMap.get('id');
+
+      this.apiService.enviarPeticionPutModificarContacto(Number(id), contacto).subscribe({
+        next: data => {
+          
+          console.log("asd");
+          
+        },
+        error: error => {
+        }
+      })
+
+    }
   }
 
 }

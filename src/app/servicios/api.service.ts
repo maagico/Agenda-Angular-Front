@@ -52,6 +52,23 @@ export class ApiService {
     return this.httpClient.get<any>(this.REST_API_URL + "/contactos/" + id);
   }
 
+  public enviarPeticionPutModificarContacto(id: number, contacto: string): Observable<any>{
+
+    let usuarioJSON = JSON.parse(contacto);
+    
+    const nombre = usuarioJSON['nombre'];
+    const apellidos = usuarioJSON['apellidos'];
+    const telefono = usuarioJSON['telefono'];
+    //const segundoTelefono = usuarioJSON['segundoTelefono'];
+
+    const params = new HttpParams()
+      .set('nombre', nombre)
+      .set('apellidos', apellidos)
+      .set('telefono', telefono);
+      
+    return this.httpClient.put<any>(this.REST_API_URL + "/contactos/" + id,  params);
+  } 
+
   public enviarPeticionGetRoles(): Observable<any>{
 
     return this.httpClient.get<any>(this.REST_API_URL + "/roles");

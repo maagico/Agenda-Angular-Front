@@ -41,7 +41,9 @@
 .boton-eliminar-contacto{
     display: flex;
     justify-content: center;
-    align-items: center;    
+    align-items: center;   
+    
+    width:450px; 
 }
 
 .boton-modificar-contacto{
@@ -51,6 +53,7 @@
     
     margin-top:10px;
     margin-bottom:10px;
+    width:450px;
 }
 
 .boton-volver-contacto{
