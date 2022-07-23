@@ -54,17 +54,22 @@ export class ApiService {
 
   public enviarPeticionPutModificarContacto(id: number, contacto: string): Observable<any>{
 
-    let usuarioJSON = JSON.parse(contacto);
+    let correoJSON = JSON.parse(contacto);
     
-    const nombre = usuarioJSON['nombre'];
-    const apellidos = usuarioJSON['apellidos'];
-    const telefono = usuarioJSON['telefono'];
-    //const segundoTelefono = usuarioJSON['segundoTelefono'];
+    const nombre = correoJSON['nombre'];
+    const apellidos = correoJSON['apellidos'];
+    const telefono = correoJSON['telefono'];
+    const segundoTelefono = correoJSON['segundoTelefono'];
+    const correo = correoJSON['correo'];
+    const segundoCorreo = correoJSON['segundoCorreo'];
 
     const params = new HttpParams()
       .set('nombre', nombre)
       .set('apellidos', apellidos)
-      .set('telefono', telefono);
+      .set('telefono', telefono)
+      .set('segundoTelefono', segundoTelefono)
+      .set('correo', correo)
+      .set('segundoCorreo', segundoCorreo);
       
     return this.httpClient.put<any>(this.REST_API_URL + "/contactos/" + id,  params);
   } 

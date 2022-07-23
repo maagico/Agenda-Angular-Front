@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/servicios/api.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -12,27 +12,28 @@ export class EditarContactoComponent implements OnInit {
 
   form!: FormGroup;
   contacto: any;
-  
-  constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private formBuilder: FormBuilder) { }
+  textoModificacion: string = "";
+
+  constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private formBuilder: FormBuilder) {
+    
+   this.inicializarFormulario()
+  }
 
   ngOnInit(): void {
-    
-    this.inicializarFormulario();
-
+  
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     
     this.apiService.enviarPeticionGetContactoById(Number(id)).subscribe({
       next: data => {
         
-        this.form.setValue({
-   
-          nombre: [data.nombre],
-          apellidos: [data.apellidos],
-          telefono: [data.telefonos[0]?.numero],
-          segundoTelefono: [data.telefonos[1]?.numero],
-          correo: [data.correos[0]?.correo],
-          segundoCorreo: [data.correos[1]?.correo]   
-       })
+        this.form = this.formBuilder.group({
+          nombre: new FormControl(data.nombre,  [Validators.required]),
+          apellidos: new FormControl(data.apellidos, [Validators.required]),
+          telefono: new FormControl(data.telefonos[0]?.numero,[Validators.minLength(9), Validators.maxLength(9), Validators.pattern('[0-9]{9}')]),
+          segundoTelefono: new FormControl(data.telefonos[1]?.numero,[Validators.minLength(9),Validators.maxLength(9), Validators.pattern('[0-9]{9}')]),
+          correo: new FormControl(data.correos[0]?.correo, [Validators.email]),
+          segundoCorreo: new FormControl(data.correos[1]?.correo, [Validators.email])
+        });
 
        console.log(data);
 
@@ -45,15 +46,15 @@ export class EditarContactoComponent implements OnInit {
 
   }
 
-  inicializarFormulario():void{
+  inicializarFormulario(): void{
 
     this.form = this.formBuilder.group({
-      nombre: ['',  Validators.required],
-      apellidos: ['',  Validators.required],
-      telefono: new FormControl(),
-      segundoTelefono: new FormControl(),
-      correo: new FormControl(),
-      segundoCorreo: new FormControl()
+      nombre: new FormControl(''),
+      apellidos: new FormControl(''),
+      telefono: new FormControl(''),
+      segundoTelefono: new FormControl(''),
+      correo: new FormControl(''),
+      segundoCorreo: new FormControl('')
     });
 
   }
@@ -62,7 +63,7 @@ export class EditarContactoComponent implements OnInit {
 
     let contacto = JSON.stringify(this.form.value, null, 2);
 
-    if (this.form.invalid) {
+    if (!this.form.valid) {
 
       return;
 
@@ -73,7 +74,7 @@ export class EditarContactoComponent implements OnInit {
       this.apiService.enviarPeticionPutModificarContacto(Number(id), contacto).subscribe({
         next: data => {
           
-          console.log("asd");
+          this.textoModificacion = data.texto;
           
         },
         error: error => {
@@ -82,5 +83,4 @@ export class EditarContactoComponent implements OnInit {
 
     }
   }
-
 }

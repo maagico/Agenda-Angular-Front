@@ -4,9 +4,11 @@
 
 </div>
 
+<span class = "centrar-mensaje">{{textoModificacion}}</span>
+
 <div class="centrar-editar-contactos">
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form [formGroup]="form">
    
         <mat-form-field appearance="fill" class = "campo-nombre">
           <mat-label>Introduce el nombre</mat-label>
@@ -26,14 +28,28 @@
         <mat-form-field appearance="fill" class = "campo-primer-telefono">
           <mat-label>Introduce el teléfono
           </mat-label>
-          <input matInput type="text" formControlName="telefono" maxlength="9">
+          <input matInput type="tel" formControlName="telefono" maxlength="9" minlength="9" patterm = "^[0-9]{9}">
+          <mat-icon matSuffix>phone</mat-icon>
         </mat-form-field>
+        
+        <div class = "campo-error" *ngIf="this.form.controls['telefono'].hasError('pattern')">
+          El teléfono debe tener 9 dígitos
+        </div>
+
+        <br/>
 
         <mat-form-field appearance="fill" class = "campo-segundo-telefono">
           <mat-label>Introduce otro teléfono
           </mat-label>
-          <input matInput type="text" formControlName="segundoTelefono" maxlength="9">
+          <input matInput type="tel" formControlName="segundoTelefono" maxlength="9" minlength="9">
+          <mat-icon matSuffix>phone</mat-icon>
         </mat-form-field>
+        
+        <div class = "campo-error" *ngIf="this.form.controls['segundoTelefono'].hasError('pattern')">
+          El teléfono debe tener 9 dígitos
+        </div>
+        
+        <br/>
 
         <hr/>
 
@@ -41,21 +57,33 @@
           <mat-label>Introduce el correo
           </mat-label>
           <input matInput type="email" formControlName="correo" maxlength="70">
+          <mat-icon matSuffix>alternate_email</mat-icon>
         </mat-form-field>
+        
+        <div class = "campo-error" *ngIf="this.form.controls['correo'].hasError('email')">
+          El formato del correo es incorrecto
+        </div>
 
+        <br/>
+        
         <mat-form-field appearance="fill" class = "campo-segundo-correo">
           <mat-label>Introduce otro correo
           </mat-label>
           <input matInput type="email" formControlName="segundoCorreo" maxlength="70">
+          <mat-icon matSuffix>alternate_email</mat-icon>
         </mat-form-field>
       
+        <div class = "campo-error" *ngIf="this.form.controls['segundoCorreo'].hasError('email')">
+          El formato del correo es incorrecto
+        </div>
+
         <br/>
         
         <a button mat-raised-button color="warn" routerLink="/signup" class = "boton-eliminar-contacto">
             Eliminar contacto
         </a>
 
-        <button mat-raised-button color="primary"  class = "boton-modificar-contacto">Modificar contacto</button>
+        <button mat-raised-button color="primary"  (click)="onSubmit()" class = "boton-modificar-contacto">Modificar contacto</button>
 
         <a mat-stroked-button color="success"  routerLink="/contactos" class = "boton-volver-contacto">
           Volver

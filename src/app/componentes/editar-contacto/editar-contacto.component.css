@@ -21,21 +21,21 @@
 }
 
 .campo-primer-telefono{
-    width:220px !important;
+    width:450px !important;
     margin-right: 10px;
 }
 
 .campo-segundo-telefono{
-    width:220px !important;
+    width:450px !important;
 }
 
 .campo-primer-correo{
-    width:220px !important;
+    width:450px !important;
     margin-right: 10px;
 }
 
 .campo-segundo-correo{
-    width:220px !important;
+    width:450px !important;
 }
 
 .boton-eliminar-contacto{
@@ -60,4 +60,32 @@
     display: flex;
     justify-content: center;
     align-items: center; 
+}
+
+.centrar-mensaje{
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    color:green;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.campo-error-primer-telefono{
+    margin-right: 10px;
+    color:red;
+    
+}
+
+.campo-error-segundo-telefono{
+    color:red;
+}
+
+.campo-error{
+    color:red;
+}
+
+hr{
+    width:430px; 
+    margin-right:20px;
 }
