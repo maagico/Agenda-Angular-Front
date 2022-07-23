@@ -4,12 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,7 +26,7 @@ import { ContactosComponent } from './componentes/contactos/contactos.component'
 import { EditarContactoComponent } from './componentes/editar-contacto/editar-contacto.component';
 import { AuthInterceptorService } from './servicios/auth.interceptor.service';
 import { UsuarioService } from './servicios/usuario.service';
-
+import { DialogEliminarContactoComponent } from './componentes/editar-contacto/dialog-eliminar-contacto.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { UsuarioService } from './servicios/usuario.service';
     LoginComponent,
     SignupComponent,
     ContactosComponent,
-    EditarContactoComponent
+    EditarContactoComponent,
+    DialogEliminarContactoComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +51,7 @@ import { UsuarioService } from './servicios/usuario.service';
     MatSelectModule,
     MatTableModule,
     MatGridListModule,
+    MatDialogModule,
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule

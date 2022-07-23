@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/servicios/api.service';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogEliminarContactoComponent } from './dialog-eliminar-contacto.component';
 
 @Component({
   selector: 'app-editar-contacto',
@@ -14,7 +16,7 @@ export class EditarContactoComponent implements OnInit {
   contacto: any;
   textoModificacion: string = "";
 
-  constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private formBuilder: FormBuilder) {
+  constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private formBuilder: FormBuilder, public dialog: MatDialog) {
     
    this.inicializarFormulario()
   }
@@ -83,4 +85,14 @@ export class EditarContactoComponent implements OnInit {
 
     }
   }
+
+  mostrarDialogEliminarContacto(){
+    
+    this.dialog.open(DialogEliminarContactoComponent, {
+      width: '350px', 
+    });
+
+  }
+
 }
+

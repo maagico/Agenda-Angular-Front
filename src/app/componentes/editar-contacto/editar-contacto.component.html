@@ -79,7 +79,7 @@
 
         <br/>
         
-        <a button mat-raised-button color="warn" routerLink="/signup" class = "boton-eliminar-contacto">
+        <a button mat-raised-button color="warn" (click)="mostrarDialogEliminarContacto()" class = "boton-eliminar-contacto">
             Eliminar contacto
         </a>
 
@@ -90,5 +90,5 @@
         </a>
         
     </form>
-    
+
 </div>
