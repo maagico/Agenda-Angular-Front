@@ -4,7 +4,7 @@
 
 </div>
 
-<span class = "centrar-mensaje">{{textoModificacion}}</span>
+<span class = "centrar-mensaje">{{textoRespuesta}}</span>
 
 <div class="centrar-editar-contactos">
 
@@ -79,11 +79,14 @@
 
         <br/>
         
-        <a button mat-raised-button color="warn" (click)="mostrarDialogEliminarContacto()" class = "boton-eliminar-contacto">
+        <a *ngIf="!esCreacion" button mat-raised-button color="warn" (click)="mostrarDialogEliminarContacto()" class = "boton-eliminar-contacto">
             Eliminar contacto
         </a>
 
-        <button mat-raised-button color="primary"  (click)="onSubmit()" class = "boton-modificar-contacto">Modificar contacto</button>
+        <button *ngIf="!esCreacion" mat-raised-button color="primary"  (click)="onSubmit()" class = "boton-modificar-contacto">Modificar contacto</button>
+
+        <button *ngIf="esCreacion" mat-raised-button color="primary"  (click)="onSubmit()" class = "boton-crear-contacto">Crear contacto</button>
+
 
         <a mat-stroked-button color="success"  routerLink="/contactos" class = "boton-volver-contacto">
           Volver

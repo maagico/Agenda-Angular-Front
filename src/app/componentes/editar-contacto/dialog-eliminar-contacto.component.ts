@@ -1,4 +1,4 @@
-import { Component, Inject, Input } from "@angular/core";
+import { Component, Inject, Input, OnInit } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ApiService } from "src/app/servicios/api.service";
@@ -7,12 +7,15 @@ import { ApiService } from "src/app/servicios/api.service";
     selector: 'dialog-eliminar-contacto',
     templateUrl: 'dialog-eliminar-contacto.component.html',
   })
-  export class DialogEliminarContactoComponent {
+  export class DialogEliminarContactoComponent implements OnInit{
 
     constructor(public dialogRef: MatDialogRef<DialogEliminarContactoComponent>, 
                @Inject(MAT_DIALOG_DATA) public data: any, 
                private apiService: ApiService, 
                private router: Router) {
+    }
+  
+    ngOnInit(): void {
     }
 
     eliminarContacto(){

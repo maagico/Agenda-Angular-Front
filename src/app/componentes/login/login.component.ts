@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
           let ok: boolean = data.ok;
           let token = data.token;
 
-          localStorage.setItem('token', token);
+          this.usuarioService.setToken(token);
 
           if(ok){
 
@@ -69,11 +69,12 @@ export class LoginComponent implements OnInit {
 
             const tokenDescifrado = helper.decodeToken(token);    
             const roleToken = tokenDescifrado['ROLES'];            
-            console.log("LoginComponent " + roleToken);
+            //console.log("LoginComponent " + roleToken);
 
             // Si es rol ROLE_USUARIO que vaya a contactos, en caso 
             //de que sea ROLE_ADMIN va a usuarios
 
+            this.usuarioService.setLogueado(true);
             this.usuarioService.setEnContacto(true);
             this.router.navigate(['contactos']);
           }

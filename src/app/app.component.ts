@@ -8,8 +8,6 @@ import { UsuarioService } from "./servicios/usuario.service";
 })
 export class AppComponent {
   
-  constructor(private usuarioService: UsuarioService){
-    
-    console.log("AppComponent ---- " + this.usuarioService.estaLogueado());
+  constructor(){
   }
 }

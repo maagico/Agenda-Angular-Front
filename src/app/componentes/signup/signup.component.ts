@@ -49,7 +49,6 @@ export class SignupComponent implements OnInit {
 
     }else{
 
-    
       this.apiService.enviarPeticionPostCrearCuenta(usuarioForm).subscribe({
         next: data => {
 

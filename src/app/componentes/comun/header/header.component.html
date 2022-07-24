@@ -1,5 +1,5 @@
-<mat-toolbar>
-    <div [hidden]="!usuarioService.estaEnContacto()">
+<mat-toolbar *ngIf="usuarioService.estaLogueado()">
+    <div>
         <button mat-mini-fab aria-label="Página principal" routerLink="contactos">
             <mat-icon>home</mat-icon>
         </button>
@@ -11,5 +11,8 @@
         </button>
     </div>
     -->
-    <span class = "agenda">Agenda</span>   
+    <span class = "agenda">Agenda</span>  
+    
+    <a routerLink = "crear-contacto" class = "crear-contacto">Crear contacto</a>  
+    <a routerLink = "logout" class = "logout">Logout</a>  
 </mat-toolbar>

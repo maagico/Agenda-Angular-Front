@@ -27,6 +27,8 @@ import { EditarContactoComponent } from './componentes/editar-contacto/editar-co
 import { AuthInterceptorService } from './servicios/auth.interceptor.service';
 import { UsuarioService } from './servicios/usuario.service';
 import { DialogEliminarContactoComponent } from './componentes/editar-contacto/dialog-eliminar-contacto.component';
+import { CrearContactoComponent } from './componentes/crear-contacto/crear-contacto.component';
+import { LogoutComponent } from './componentes/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { DialogEliminarContactoComponent } from './componentes/editar-contacto/d
     SignupComponent,
     ContactosComponent,
     EditarContactoComponent,
-    DialogEliminarContactoComponent
+    DialogEliminarContactoComponent,
+    CrearContactoComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

@@ -14,8 +14,9 @@ export class EditarContactoComponent implements OnInit {
 
   id!:string;
   form!: FormGroup;
+  esCreacion: boolean = false;
   contacto: any;
-  textoModificacion: string = "";
+  textoRespuesta: string = "";
   
   constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private formBuilder: FormBuilder, public dialog: MatDialog) {
     
@@ -23,6 +24,13 @@ export class EditarContactoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    let contactoEliminado: string | null = this.activatedRoute.snapshot.queryParamMap.get('cc');
+
+    if(contactoEliminado != null && contactoEliminado === 'ok'){
+      
+      this.textoRespuesta = "Se ha creado el contacto correctamente. ";
+    }
 
     this.id = this.activatedRoute.snapshot.paramMap.get('id')!;
 
@@ -74,7 +82,7 @@ export class EditarContactoComponent implements OnInit {
       this.apiService.enviarPeticionPutModificarContacto(Number(id), contacto).subscribe({
         next: data => {
           
-          this.textoModificacion = data.texto;
+          this.textoRespuesta = data.texto;
           
         },
         error: error => {

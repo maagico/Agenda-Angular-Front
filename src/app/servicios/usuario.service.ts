@@ -5,25 +5,33 @@ import { Injectable } from '@angular/core';
 })
 export class UsuarioService {
 
-    public setLogueado(logueado: boolean) {
-
-        sessionStorage.setItem("logueado", String(logueado));
+    setToken(token: string){
+        
+        localStorage.setItem('token', token);
     }
 
-    public estaLogueado(): boolean {
-
-        return Boolean(sessionStorage.getItem("logueado"));
+    quitarToken(){
+        
+        localStorage.setItem('token', '');
     }
 
-    public setEnContacto(enContacto: boolean) {
+    setLogueado(logueado: boolean) {
 
-        sessionStorage.setItem("enContacto", String(enContacto));
+        localStorage.setItem("logueado", logueado.toString());
     }
 
-    public estaEnContacto(): boolean {
+    estaLogueado(): boolean{
 
-        return Boolean(sessionStorage.getItem("enContacto"));
+        return localStorage.getItem("logueado") === 'true';
     }
 
+    setEnContacto(enContacto: boolean) {
 
+        localStorage.setItem("enContacto", enContacto.toString());
+    }
+
+    estaEnContacto(): boolean {
+
+        return localStorage.getItem("enContacto") === 'true';
+    }
 }
