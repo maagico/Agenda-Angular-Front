@@ -1,6 +1,8 @@
 <div class = "centrar-titulo">
   
-  <h1>Editar contacto</h1>
+  
+  <h1 *ngIf="esCreacion">Crear contacto</h1>
+  <h1 *ngIf="!esCreacion">Editar contacto</h1>
 
 </div>
 
