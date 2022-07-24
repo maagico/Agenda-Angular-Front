@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ApiService } from 'src/app/servicios/api.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
+import { ApiService } from 'src/app/servicios/api.service';
 import { DialogEliminarContactoComponent } from './dialog-eliminar-contacto.component';
 
 @Component({
@@ -12,20 +12,21 @@ import { DialogEliminarContactoComponent } from './dialog-eliminar-contacto.comp
 })
 export class EditarContactoComponent implements OnInit {
 
+  id!:string;
   form!: FormGroup;
   contacto: any;
   textoModificacion: string = "";
-
+  
   constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private formBuilder: FormBuilder, public dialog: MatDialog) {
     
    this.inicializarFormulario()
   }
 
   ngOnInit(): void {
-  
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
-    
-    this.apiService.enviarPeticionGetContactoById(Number(id)).subscribe({
+
+    this.id = this.activatedRoute.snapshot.paramMap.get('id')!;
+
+    this.apiService.enviarPeticionGetContactoById(Number(this.id)).subscribe({
       next: data => {
         
         this.form = this.formBuilder.group({
@@ -36,9 +37,6 @@ export class EditarContactoComponent implements OnInit {
           correo: new FormControl(data.correos[0]?.correo, [Validators.email]),
           segundoCorreo: new FormControl(data.correos[1]?.correo, [Validators.email])
         });
-
-       console.log(data);
-
       },
       error: error => {
           
@@ -89,10 +87,10 @@ export class EditarContactoComponent implements OnInit {
   mostrarDialogEliminarContacto(){
     
     this.dialog.open(DialogEliminarContactoComponent, {
-      width: '350px', 
+       width: '350px', 
+       data:{id: this.id}
     });
-
-  }
+ }
 
 }
 
