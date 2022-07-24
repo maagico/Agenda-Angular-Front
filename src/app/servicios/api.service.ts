@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-
+  
   private REST_API_URL: string = "http://localhost:8080/api"; 
 
   constructor(private httpClient: HttpClient) { 
@@ -73,6 +73,11 @@ export class ApiService {
       
     return this.httpClient.put<any>(this.REST_API_URL + "/contactos/" + id,  params);
   } 
+
+  public enviarPeticionDeleteContactoById(id: number) {
+    
+    return this.httpClient.delete<any>(this.REST_API_URL + "/contactos/" + id);
+  }
 
   public enviarPeticionGetRoles(): Observable<any>{
 

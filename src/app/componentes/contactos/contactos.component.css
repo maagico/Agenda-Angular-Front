@@ -15,3 +15,12 @@
 .mat-elevation-z8 {
     width: 80%;
 }
+
+.contacto-eliminado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color:green;
+    font-weight: bold;
+}
