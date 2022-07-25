@@ -65,7 +65,13 @@
 
       <tr mat-header-row *matHeaderRowDef="columnasVisibles"></tr>
       <tr mat-row *matRowDef="let row; columns: columnasVisibles;"></tr>
-
+      
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" [attr.colspan]="columnasVisibles.length">
+          No se han encontrado contactos.
+        </td>
+      </tr>
+      
   </table>
 
 </div>
