@@ -48,21 +48,24 @@ export class ContactosComponent implements OnInit {
     
     const textoABuscar = this.form.value['buscador'];
 
-    this.apiService.enviarPeticionGetBuscador(textoABuscar).subscribe({
-      next: data => {
-        
-        this.contactos = data;   
-        this.mostrarDeshacerBusqueda = true;
-        this.mensajeContactoEliminado = "";
-        
-      },
-      error: error => {
+    if(textoABuscar != ""){
+      
+      this.apiService.enviarPeticionGetBuscador(textoABuscar).subscribe({
+        next: data => {
           
-        console.log(error);
+          this.contactos = data;   
+          this.mostrarDeshacerBusqueda = true;
+          this.mensajeContactoEliminado = "";
+          
+        },
+        error: error => {
+            
+          console.log(error);
 
-        this.mostrarDeshacerBusqueda = false;   
-      }
-    })
+          this.mostrarDeshacerBusqueda = false;   
+        }
+      })
+    }
 
   }
 
