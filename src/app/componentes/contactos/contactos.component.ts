@@ -46,11 +46,15 @@ export class ContactosComponent implements OnInit {
 
   onSubmit(){
     
-    this.apiService.enviarPeticionGetBuscador(this.form.value).subscribe({
+    const textoABuscar = this.form.value['buscador'];
+
+    this.apiService.enviarPeticionGetBuscador(textoABuscar).subscribe({
       next: data => {
         
         this.contactos = data;   
-        this.mostrarDeshacerBusqueda = true;     
+        this.mostrarDeshacerBusqueda = true;
+        this.mensajeContactoEliminado = "";
+        
       },
       error: error => {
           
@@ -64,7 +68,7 @@ export class ContactosComponent implements OnInit {
 
   deshacerBusqueda(){
 
-    const textoABuscar = {"buscador": ""};
+    const textoABuscar = "";
 
     this.apiService.enviarPeticionGetBuscador(textoABuscar).subscribe({
       next: data => {
