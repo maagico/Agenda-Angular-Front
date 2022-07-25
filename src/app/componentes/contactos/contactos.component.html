@@ -10,6 +10,22 @@
 
 </div>
 
+<div>
+<form [formGroup]="form">
+   
+  <mat-form-field appearance="fill" class = "campo-buscador">
+    <mat-label>Introduce el nombre o apellidos a buscar</mat-label>
+    <input matInput type="text" formControlName="buscador" maxlength="20">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary"  (click)="onSubmit()" class = "boton-buscador-contactos">Buscar contacto</button>
+
+  <button *ngIf="mostrarDeshacerBusqueda" mat-raised-button  (click)="deshacerBusqueda()" class = "boton-deshacer-busqueda">Deshacer búsqueda</button>
+
+
+</form>
+</div>
+
 <div class = "tabla-contactos">
 
   <table mat-table [dataSource]="contactos" class="mat-elevation-z8">

@@ -25,3 +25,24 @@
     color:green;
     font-weight: bold;
 }
+
+.campo-buscador{
+    margin-left: 10%;
+    width: 80% !important;
+}
+
+.boton-buscador-contactos{
+    margin-left: 10%;
+    margin-bottom: 10px;
+    
+    width: 80% !important;
+}
+
+.boton-deshacer-busqueda{
+
+    margin-left: 10%;
+    margin-bottom: 10px;
+
+    width: 80% !important;
+
+}

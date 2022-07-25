@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -56,6 +57,7 @@ import { LogoutComponent } from './componentes/logout/logout.component';
     MatTableModule,
     MatGridListModule,
     MatDialogModule,
+    MatAutocompleteModule,
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule

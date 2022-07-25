@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/servicios/api.service';
 
@@ -9,16 +10,21 @@ import { ApiService } from 'src/app/servicios/api.service';
 })
 export class ContactosComponent implements OnInit {
 
+  form!: FormGroup;
   columnasVisibles: string[] = ['nombre', 'apellidos', 'telefono', 'editar'];
   contactos: any;
   mensajeContactoEliminado!: string;
+  mostrarDeshacerBusqueda = false;
 
-  constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute,) { 
-    
+  constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute,private formBuilder: FormBuilder) { 
   }
 
   ngOnInit(): void {
   
+    this.form = this.formBuilder.group({
+      buscador: new FormControl('')
+    })
+
     let contactoEliminado: string | null = this.activatedRoute.snapshot.queryParamMap.get('ce');
 
     if(contactoEliminado != null && contactoEliminado === 'ok'){
@@ -39,6 +45,36 @@ export class ContactosComponent implements OnInit {
   }
 
   onSubmit(){
+    
+    this.apiService.enviarPeticionGetBuscador(this.form.value).subscribe({
+      next: data => {
+        
+        this.contactos = data;   
+        this.mostrarDeshacerBusqueda = true;     
+      },
+      error: error => {
+          
+        console.log(error);
+
+        this.mostrarDeshacerBusqueda = false;   
+      }
+    })
+
+  }
+
+  deshacerBusqueda(){
+
+    const textoABuscar = {"buscador": ""};
+
+    this.apiService.enviarPeticionGetBuscador(textoABuscar).subscribe({
+      next: data => {
+        
+        this.contactos = data;   
+        this.mostrarDeshacerBusqueda = false; 
+        
+        this.form.patchValue({buscador: ''})
+      }
+    })   
   }
 
 }

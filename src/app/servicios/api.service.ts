@@ -52,6 +52,11 @@ export class ApiService {
     return this.httpClient.get<any>(this.REST_API_URL + "/contactos/" + id);
   }
 
+  public enviarPeticionGetBuscador(textoABuscar: any): Observable<any>{
+
+    return this.httpClient.get<any>(this.REST_API_URL + "/contactos?buscar=" + textoABuscar['buscador']);
+  }
+
   public enviarPeticionPutCrearContacto(contacto: string): Observable<any>{
 
     let correoJSON = JSON.parse(contacto);
