@@ -1,0 +1,11 @@
+<h3 mat-dialog-title>Eliminar usuario</h3>
+<div mat-dialog-content>
+  <p>¿Deseas eliminar el usuario?</p>
+</div>
+<div mat-dialog-actions>
+  <a button mat-raised-button color="warn" (click)="eliminarUsuario()" class = "boton-eliminar-usuario">
+    Eliminar
+</a>
+  <button mat-raised-button (click)="cerrarDialog()" cdkFocusInitial>Cerrar</button>
+ 
+</div>

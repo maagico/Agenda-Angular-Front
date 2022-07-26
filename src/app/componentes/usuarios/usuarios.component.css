@@ -1,0 +1,52 @@
+.tabla-usuarios{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:10px;
+    
+}
+
+.titulo-usuario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mat-elevation-z8 {
+    width: 80%;
+}
+
+.usuario-eliminado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+
+    color:green;
+    font-weight: bold;
+}
+
+.campo-buscador{
+    margin-left: 10%;
+    width: 80% !important;
+}
+
+.boton-buscador-usuarios{
+    margin-left: 10%;
+    margin-bottom: 10px;
+    
+    width: 80% !important;
+}
+
+.boton-deshacer-busqueda{
+
+    margin-left: 10%;
+    margin-bottom: 10px;
+
+    width: 80% !important;
+
+}
+
+.borrar-usuario{
+    color:red;
+}

@@ -30,6 +30,8 @@ import { UsuarioService } from './servicios/usuario.service';
 import { DialogEliminarContactoComponent } from './componentes/editar-contacto/dialog-eliminar-contacto.component';
 import { CrearContactoComponent } from './componentes/crear-contacto/crear-contacto.component';
 import { LogoutComponent } from './componentes/logout/logout.component';
+import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
+import { DialogEliminarUsuarioComponent } from './componentes/dialog-eliminar-usuario/dialog-eliminar-usuario.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { LogoutComponent } from './componentes/logout/logout.component';
     EditarContactoComponent,
     DialogEliminarContactoComponent,
     CrearContactoComponent,
-    LogoutComponent
+    UsuariosComponent,
+    LogoutComponent,
+    DialogEliminarUsuarioComponent
   ],
   imports: [
     BrowserModule,

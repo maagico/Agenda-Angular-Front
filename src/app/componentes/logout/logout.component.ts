@@ -16,7 +16,7 @@ export class LogoutComponent implements OnInit {
 
     localStorage.setItem('token', '');
 
-    this.usuarioService.setEnContacto(false);
+    this.usuarioService.setEnContactos(false);
     this.usuarioService.setLogueado(false);
 
     this.router.navigate(['']);

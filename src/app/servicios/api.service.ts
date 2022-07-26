@@ -52,7 +52,7 @@ export class ApiService {
     return this.httpClient.get<any>(this.REST_API_URL + "/contactos/" + id);
   }
 
-  public enviarPeticionGetBuscador(textoABuscar: any): Observable<any>{
+  public enviarPeticionGetBuscadorContactos(textoABuscar: any): Observable<any>{
 
     return this.httpClient.get<any>(this.REST_API_URL + "/contactos?buscar=" + textoABuscar);
   }
@@ -109,5 +109,20 @@ export class ApiService {
   public enviarPeticionGetRoles(): Observable<any>{
 
     return this.httpClient.get<any>(this.REST_API_URL + "/roles");
+  }
+
+  public enviarPeticionGetUsuarios(): Observable<any>{
+
+    return this.httpClient.get<any>(this.REST_API_URL + "/usuarios");
+  }
+
+  public enviarPeticionGetBuscadorUsuarios(textoABuscar: any): Observable<any>{
+
+    return this.httpClient.get<any>(this.REST_API_URL + "/usuarios?buscar=" + textoABuscar);
+  }
+
+  public enviarPeticionDeleteUsuarioById(id: number) {
+    
+    return this.httpClient.delete<any>(this.REST_API_URL + "/usuarios/" + id);
   }
 }

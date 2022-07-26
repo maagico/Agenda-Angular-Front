@@ -29,7 +29,13 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     
     if(roleToken == 'ROLE_USUARIO'){
 
-      this.usuarioService.setEnContacto(true);
+      this.usuarioService.setEnContactos(true);
+      this.usuarioService.setEnUsuarios(false);
+    
+    }else if(roleToken == 'ROLE_ADMIN'){
+
+      this.usuarioService.setEnUsuarios(true);
+      this.usuarioService.setEnContactos(false);
     }
 
     return esRutaPermitida;

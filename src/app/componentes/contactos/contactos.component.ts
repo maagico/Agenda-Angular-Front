@@ -50,7 +50,7 @@ export class ContactosComponent implements OnInit {
 
     if(textoABuscar != ""){
       
-      this.apiService.enviarPeticionGetBuscador(textoABuscar).subscribe({
+      this.apiService.enviarPeticionGetBuscadorContactos(textoABuscar).subscribe({
         next: data => {
           
           this.contactos = data;   
@@ -73,7 +73,7 @@ export class ContactosComponent implements OnInit {
 
     const textoABuscar = "";
 
-    this.apiService.enviarPeticionGetBuscador(textoABuscar).subscribe({
+    this.apiService.enviarPeticionGetBuscadorContactos(textoABuscar).subscribe({
       next: data => {
         
         this.contactos = data;   

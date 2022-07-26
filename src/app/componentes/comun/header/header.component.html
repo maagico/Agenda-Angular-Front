@@ -1,21 +1,28 @@
-<mat-toolbar *ngIf="usuarioService.estaLogueado()">
+<mat-toolbar *ngIf="usuarioService.estaLogueado() && usuarioService.estaEnContacto()">
     <div>
         <button mat-mini-fab aria-label="Página principal" routerLink="contactos">
             <mat-icon>home</mat-icon>
         </button>
     </div>
-    <!--
-    <div>
-        <button mat-mini-fab aria-label="Página principal" routerLink="/usuarios">
-            <mat-icon>home</mat-icon>
-        </button>
-    </div>
-    -->
+    
     <a class = "agenda" routerLink="contactos">Agenda</a>  
     
     <a routerLink = "crear-contacto" class = "crear-contacto">Crear contacto</a>
     <mat-icon class = "icono-crear-contacto">perm_identity</mat-icon>
     
+    <a routerLink = "logout" class = "logout">Logout</a>  
+    <mat-icon class = "icono-logout">exit_to_app</mat-icon>
+</mat-toolbar>
+
+<mat-toolbar *ngIf="usuarioService.estaLogueado() && usuarioService.estaEnUsuario()">
+    <div>
+        <button mat-mini-fab aria-label="Página principal" routerLink="usuarios">
+            <mat-icon>home</mat-icon>
+        </button>
+    </div>
+    
+    <a class = "agenda" routerLink="usuarios">Agenda</a>  
+
     <a routerLink = "logout" class = "logout">Logout</a>  
     <mat-icon class = "icono-logout">exit_to_app</mat-icon>
 </mat-toolbar>

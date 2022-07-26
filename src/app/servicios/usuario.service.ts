@@ -25,7 +25,7 @@ export class UsuarioService {
         return localStorage.getItem("logueado") === 'true';
     }
 
-    setEnContacto(enContacto: boolean) {
+    setEnContactos(enContacto: boolean) {
 
         localStorage.setItem("enContacto", enContacto.toString());
     }
@@ -33,5 +33,15 @@ export class UsuarioService {
     estaEnContacto(): boolean {
 
         return localStorage.getItem("enContacto") === 'true';
+    }
+
+    setEnUsuarios(enUsuarios: boolean) {
+
+        localStorage.setItem("enUsuarios", enUsuarios.toString());
+    }
+
+    estaEnUsuario(): boolean {
+
+        return localStorage.getItem("enUsuarios") === 'true';
     }
 }

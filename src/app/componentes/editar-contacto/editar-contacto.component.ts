@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/servicios/api.service';
 import { DialogEliminarContactoComponent } from './dialog-eliminar-contacto.component';
@@ -97,7 +97,7 @@ export class EditarContactoComponent implements OnInit {
     }
   }
 
-  mostrarDialogEliminarContacto(){
+  mostrarDialogEliminarContacto(): void{
     
     this.dialog.open(DialogEliminarContactoComponent, {
        width: '350px', 

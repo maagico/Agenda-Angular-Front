@@ -53,11 +53,10 @@ const routes: Routes = [
     component: UsuariosComponent,
     canActivate: [AuthGuard],
     data: {
-      roles: ['ROLE_USUARIO']
+      roles: ['ROLE_ADMIN']
     }
   }  
-
-
+  
 ];
 
 @NgModule({

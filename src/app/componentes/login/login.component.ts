@@ -75,8 +75,23 @@ export class LoginComponent implements OnInit {
             //de que sea ROLE_ADMIN va a usuarios
 
             this.usuarioService.setLogueado(true);
-            this.usuarioService.setEnContacto(true);
-            this.router.navigate(['contactos']);
+
+            if(roleToken == 'ROLE_USUARIO'){
+              
+              this.usuarioService.setEnContactos(true);
+              this.usuarioService.setEnUsuarios(false);
+
+              this.router.navigate(['contactos']);
+
+            }else if(roleToken == 'ROLE_ADMIN'){
+              
+              this.usuarioService.setEnUsuarios(true);
+              this.usuarioService.setEnContactos(false);
+              
+              this.router.navigate(['usuarios']);
+
+            }
+
           }
         },
         error: error => {
