@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
 
             const tokenDescifrado = helper.decodeToken(token);    
             const roleToken = tokenDescifrado['ROLES'];            
-            //console.log("LoginComponent " + roleToken);
+            console.log("LoginComponent " + roleToken);
 
             // Si es rol ROLE_USUARIO que vaya a contactos, en caso 
             //de que sea ROLE_ADMIN va a usuarios

@@ -10,6 +10,14 @@
     color:green;
 }
 
+.icono-crear-contacto{
+    color:green;
+}
+
+.icono-logout{
+    color:red;
+}
+
 .logout{
     margin-left:20px;
     text-decoration:none;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/servicios/api.service';
 
@@ -61,7 +61,9 @@ export class CrearContactoComponent implements OnInit {
     }
   }
 
-  mostrarDialogEliminarContacto(){
+  get telefonos(): FormArray { return this.form.get('telefonos') as FormArray; } 
+
+  mostrarDialogEliminarContacto(): void{
   }
 
 }

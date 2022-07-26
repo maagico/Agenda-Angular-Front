@@ -37,14 +37,7 @@ export class EditarContactoComponent implements OnInit {
     this.apiService.enviarPeticionGetContactoById(Number(this.id)).subscribe({
       next: data => {
         
-        this.form = this.formBuilder.group({
-          nombre: new FormControl(data.nombre,  [Validators.required]),
-          apellidos: new FormControl(data.apellidos, [Validators.required]),
-          telefono: new FormControl(data.telefonos[0]?.numero,[Validators.minLength(9), Validators.maxLength(9), Validators.pattern('[0-9]{9}')]),
-          segundoTelefono: new FormControl(data.telefonos[1]?.numero,[Validators.minLength(9),Validators.maxLength(9), Validators.pattern('[0-9]{9}')]),
-          correo: new FormControl(data.correos[0]?.correo, [Validators.email]),
-          segundoCorreo: new FormControl(data.correos[1]?.correo, [Validators.email])
-        });
+        this.rellenarFormulario(data);
       },
       error: error => {
           
@@ -65,6 +58,18 @@ export class EditarContactoComponent implements OnInit {
       segundoCorreo: new FormControl('')
     });
 
+  }
+
+  rellenarFormulario(data: any): void{
+    
+    this.form = this.formBuilder.group({
+      nombre: new FormControl(data.nombre,  [Validators.required]),
+      apellidos: new FormControl(data.apellidos, [Validators.required]),
+      telefono: new FormControl(data.telefonos[0]?.numero,[Validators.minLength(9), Validators.maxLength(9), Validators.pattern('[0-9]{9}')]),
+      segundoTelefono: new FormControl(data.telefonos[1]?.numero,[Validators.minLength(9),Validators.maxLength(9), Validators.pattern('[0-9]{9}')]),
+      correo: new FormControl(data.correos[0]?.correo, [Validators.email]),
+      segundoCorreo: new FormControl(data.correos[1]?.correo, [Validators.email])
+    });
   }
 
   onSubmit(){
