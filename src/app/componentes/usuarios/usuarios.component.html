@@ -48,7 +48,7 @@
         <ng-container matColumnDef="borrar-usuario">
           <th mat-header-cell *matHeaderCellDef>Borrar usuario</th>
           <td mat-cell *matCellDef="let usuario"> 
-            <a button mat-raised-button  class = "borrar-usuario" (click)="mostrarDialogEliminarUsuario('{{usuario.id}}')">
+            <a button mat-raised-button  class = "borrar-usuario" (click)="mostrarDialogEliminarUsuario(usuario.id)">
               <mat-icon>delete</mat-icon>
             </a> 
           </td>

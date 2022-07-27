@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/servicios/api.service';
-import { DialogEliminarContactoComponent } from './dialog-eliminar-contacto.component';
+import { DialogEliminarContactoComponent } from '../dialog-eliminar-contacto/dialog-eliminar-contacto.component';
 
 @Component({
   selector: 'app-editar-contacto',

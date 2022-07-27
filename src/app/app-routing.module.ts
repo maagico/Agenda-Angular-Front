@@ -56,7 +56,6 @@ const routes: Routes = [
       roles: ['ROLE_ADMIN']
     }
   }  
-  
 ];
 
 @NgModule({

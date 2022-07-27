@@ -24,7 +24,7 @@ export class DialogEliminarUsuarioComponent implements OnInit {
   this.apiService.enviarPeticionDeleteUsuarioById(Number(this.data.id)).subscribe({
     next: data => {
 
-    this.router.navigate(['contactos'],{ queryParams: { ue: 'ok' } });
+    this.router.navigate(['usuarios'],{ queryParams: { ue: 'ok' } });
     },
     error: error => {
       

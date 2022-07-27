@@ -27,14 +27,14 @@ import { ContactosComponent } from './componentes/contactos/contactos.component'
 import { EditarContactoComponent } from './componentes/editar-contacto/editar-contacto.component';
 import { AuthInterceptorService } from './servicios/auth.interceptor.service';
 import { UsuarioService } from './servicios/usuario.service';
-import { DialogEliminarContactoComponent } from './componentes/editar-contacto/dialog-eliminar-contacto.component';
+import { DialogEliminarContactoComponent } from './componentes/dialog-eliminar-contacto/dialog-eliminar-contacto.component';
 import { CrearContactoComponent } from './componentes/crear-contacto/crear-contacto.component';
 import { LogoutComponent } from './componentes/logout/logout.component';
 import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
 import { DialogEliminarUsuarioComponent } from './componentes/dialog-eliminar-usuario/dialog-eliminar-usuario.component';
 
 @NgModule({
-  declarations: [
+  declarations: [ 
     AppComponent,
     HeaderComponent,
     FooterComponent,

@@ -88,6 +88,7 @@ export class UsuariosComponent implements OnInit {
 
   mostrarDialogEliminarUsuario(id: string): void{
 
+    console.log(id);
     this.dialog.open(DialogEliminarUsuarioComponent, {
       width: '350px', 
       data:{id: id}
