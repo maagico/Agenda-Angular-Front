@@ -22,7 +22,7 @@ export class UsuariosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  
+    
     this.form = this.formBuilder.group({
       buscador: new FormControl('')
     })
