@@ -8,6 +8,7 @@ import { EditarContactoComponent } from './componentes/editar-contacto/editar-co
 import { LoginComponent } from './componentes/login/login.component';
 import { LogoutComponent } from './componentes/logout/logout.component';
 import { SignupComponent } from './componentes/signup/signup.component';
+import { UsuarioContactosComponent } from './componentes/usuario-contactos/usuario-contactos.component';
 import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
 
 const routes: Routes = [
@@ -55,7 +56,15 @@ const routes: Routes = [
     data: {
       roles: ['ROLE_ADMIN']
     }
-  }  
+  },
+  {
+    path: 'usuarios/contactos/:id',
+    component: UsuarioContactosComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_ADMIN']
+    }
+  }    
 ];
 
 @NgModule({

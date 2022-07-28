@@ -116,6 +116,11 @@ export class ApiService {
     return this.httpClient.get<any>(this.REST_API_URL + "/usuarios");
   }
 
+  public enviarPeticionGetUsuarioContactos(id: string): Observable<any>{
+
+    return this.httpClient.get<any>(this.REST_API_URL + "/usuarios/contactos/" + id);
+  }
+
   public enviarPeticionGetBuscadorUsuarios(textoABuscar: any): Observable<any>{
 
     return this.httpClient.get<any>(this.REST_API_URL + "/usuarios?buscar=" + textoABuscar);

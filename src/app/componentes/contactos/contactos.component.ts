@@ -41,7 +41,7 @@ export class ContactosComponent implements OnInit {
           
         console.log(error);
       }
-    })
+    });
   }
 
   onSubmit(){

@@ -1,0 +1,55 @@
+<div class = "titulo-contacto">
+
+    <h1>Listado de contactos</h1>
+  
+  </div>
+  
+  <div class = "tabla-contactos">
+  
+    <table mat-table [dataSource]="contactos" class="mat-elevation-z8">
+  
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let contacto"> {{contacto.nombre}} </td>
+        </ng-container>
+   
+        <ng-container matColumnDef="apellidos">
+          <th mat-header-cell *matHeaderCellDef> Apellidos </th>
+          <td mat-cell *matCellDef="let contacto"> {{contacto.apellidos}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="telefono">
+          <th mat-header-cell *matHeaderCellDef> Teléfono/s </th>
+          <td mat-cell *matCellDef="let contacto"> 
+  
+            <span *ngFor="let telefonos of contacto.telefonos">{{telefonos.numero}}<br/></span>
+   
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="correo">
+            <th mat-header-cell *matHeaderCellDef> Correo/s </th>
+            <td mat-cell *matCellDef="let contacto"> 
+    
+              <span *ngFor="let correo of contacto.correos">{{correo.correo}}<br/></span>
+     
+            </td>
+          </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="columnasVisibles"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnasVisibles;"></tr>
+        
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" [attr.colspan]="columnasVisibles.length">
+            No se han encontrado contactos.
+          </td>
+        </tr>
+        
+    </table>
+  
+  </div>
+  <div>
+
+    <a mat-stroked-button class = "boton-volver" [routerLink]="['/usuarios']">Volver</a>
+
+  </div>
